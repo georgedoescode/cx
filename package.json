@@ -4,7 +4,10 @@
     "description": "CX 🎨",
     "main": "index.js",
     "scripts": {
-        "build": "npx rollup -c"
+        "build": "npx rollup -c",
+        "watch": "npx rollup -cw",
+        "serve": "npx live-server --wait=500",
+        "dev": "npx concurrently 'npm run watch' 'npm run serve'"
     },
     "repository": {
         "type": "git",
@@ -20,6 +23,8 @@
         "@babel/core": "^7.9.0",
         "@rollup/plugin-commonjs": "^11.0.2",
         "@rollup/plugin-node-resolve": "^7.1.1",
+        "concurrently": "^5.1.0",
+        "live-server": "^1.2.1",
         "rollup": "^2.2.0",
         "rollup-plugin-babel": "^4.4.0",
         "rollup-plugin-terser": "^5.3.0"

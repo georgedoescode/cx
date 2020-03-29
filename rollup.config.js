@@ -21,7 +21,7 @@ const builds = {
     esm: {
         entry: 'src/main.js',
         format: 'es',
-        dest: `dist/cx.esm.js`,
+        dest: `dist/cx.es.js`,
         external: dependencies,
         plugins: plugins,
     },
@@ -42,7 +42,7 @@ function generateConfig(name) {
         output: {
             file: opts.dest,
             format: opts.format,
-            name: pkg.name,
+            name: 'cx',
         },
         external: opts.external,
         plugins: opts.plugins || [],
