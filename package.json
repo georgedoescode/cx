@@ -1,22 +1,27 @@
 {
-  "name": "@georgedoescode/cx",
-  "version": "1.0.0",
-  "description": "CX 🎨",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/georgedoescode/cx.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/georgedoescode/cx/issues"
-  },
-  "homepage": "https://github.com/georgedoescode/cx#readme",
-  "devDependencies": {
-    "rollup": "^2.2.0"
-  }
+    "name": "@georgedoescode/cx",
+    "version": "1.0.0",
+    "description": "CX 🎨",
+    "main": "index.js",
+    "scripts": {
+        "build": "npx rollup -c"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/georgedoescode/cx.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/georgedoescode/cx/issues"
+    },
+    "homepage": "https://github.com/georgedoescode/cx#readme",
+    "devDependencies": {
+        "@babel/core": "^7.9.0",
+        "@rollup/plugin-commonjs": "^11.0.2",
+        "@rollup/plugin-node-resolve": "^7.1.1",
+        "rollup": "^2.2.0",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-terser": "^5.3.0"
+    }
 }
