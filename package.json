@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/georgedoescode/cx/issues"
   },
-  "homepage": "https://github.com/georgedoescode/cx#readme"
+  "homepage": "https://github.com/georgedoescode/cx#readme",
+  "devDependencies": {
+    "rollup": "^2.2.0"
+  }
 }
