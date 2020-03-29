@@ -1,0 +1,19 @@
+{
+  "name": "@georgedoescode/cx",
+  "version": "1.0.0",
+  "description": "CX 🎨",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/georgedoescode/cx.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/georgedoescode/cx/issues"
+  },
+  "homepage": "https://github.com/georgedoescode/cx#readme"
+}
