@@ -19,7 +19,7 @@ const plugins = [
 const builds = {
     // Native ES module, for use with new bundlers (Webpack 2+, Rollup)
     esm: {
-        entry: 'src/main.js',
+        entry: 'src/cx.js',
         format: 'es',
         dest: `dist/cx.es.js`,
         external: dependencies,
@@ -27,7 +27,7 @@ const builds = {
     },
     // Browser via <script> tag, CJS, AMD
     umd: {
-        entry: 'src/main.js',
+        entry: 'src/cx.js',
         format: 'umd',
         dest: `dist/cx.min.js`,
         plugins: [resolve(), commonjs(), terser(), ...plugins],

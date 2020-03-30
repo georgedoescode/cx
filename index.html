@@ -6,10 +6,17 @@
         <title>cx</title>
     </head>
     <body>
+        <div class="wrapper"></div>
         <script src="./dist/cx.min.js"></script>
         <script>
-            const cx = window.cx;
-            console.log(cx);
+            const canvas = cx.createCanvas({
+                width: 640,
+                height: 480,
+                mount: document.querySelector('.wrapper'),
+            });
+            const ctx = canvas.context;
+
+            console.log(ctx);
         </script>
     </body>
 </html>
