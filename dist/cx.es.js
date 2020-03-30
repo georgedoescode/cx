@@ -53,18 +53,20 @@ const DEFAULTS = {
 };
 function createCanvas(opts) {
   const options = Object.assign(DEFAULTS, opts);
-  const element = createCanvasElement(options.width, options.height);
-  const context = createCustomContext(element.getContext('2d'));
-  mountCanvasToDOM(element, options.mount);
-  setCanvasPxDensity(element, window.devicePixelRatio || 1);
+  const canvasEl = createCanvasElement(options.width, options.height);
+  const ctx = createCustomContext(canvasEl.getContext('2d'));
+  mountCanvasToDOM(canvasEl, options.mount);
+  setCanvasPxDensity(canvasEl, window.devicePixelRatio || 1);
   return {
-    element,
-    context,
+    ctx,
+    element: {
+      el: canvasEl,
 
-    setPXDensity(density) {
-      setCanvasPxDensity(element, density);
+      setPXDensity(density) {
+        setCanvasPxDensity(canvasEl, density);
+      }
+
     }
-
   };
 }
 

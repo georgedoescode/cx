@@ -4,19 +4,31 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>cx</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            .wrapper {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #f9f9f9;
+            }
+        </style>
     </head>
     <body>
         <div class="wrapper"></div>
         <script src="./dist/cx.min.js"></script>
         <script>
-            const canvas = cx.createCanvas({
+            const { ctx, element } = cx.createCanvas({
                 width: 640,
                 height: 480,
                 mount: document.querySelector('.wrapper'),
             });
-            const ctx = canvas.context;
-
-            console.log(ctx);
         </script>
     </body>
 </html>
