@@ -1,3 +1,105 @@
 # CX 🎨
 
-Really small js library for creating a nicer `canvas` element.
+**A 💀 simple library created to provide a better canvas development experience.**
+
+## Why?
+
+There are a couple of things I wish `canvas` did:
+
+-   Scale to the DPR of the screen
+-   Allow definition of custom drawing methods
+
+CX aims to provide both of these whilst staying out of the way and not disrupting your workflow.
+
+## Installation
+
+### 1. Package Manager
+
+```bash
+# npm
+npm i @georgedoescode/cx
+```
+
+### 2. CDN
+
+```html
+<script src="https://unpkg.com/@georgedoescode/cx">
+```
+
+## Usage
+
+The _(probably)_ easiest and quickest way of getting started with cx is to grab the library from `unpkg`, pop it in a `script` tag and start having a poke.
+
+Here is an example:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CX Example</title>
+    </head>
+    <body>
+        <div class="wrapper"></div>
+        <script src="https://unpkg.com/@georgedoescode/cx"></script>
+        <script>
+            // Create a new canvas, append to the DOM
+            const { ctx } = cx.createCanvas();
+
+            // Draw as you usually would!
+            ctx.moveTo(0, 0);
+            ctx.lineTo(200, 200);
+        </script>
+    </body>
+</html>
+```
+
+### Usage with module bundlers
+
+CX exports the function `createCanvas`, this can be used to build a new cx instance.
+
+```javascript
+import { createCanvas } from '@georgedoescode/cx';
+
+// Create a new canvas, append to the DOM
+const { ctx } = createCanvas();
+
+// Draw as you usually would!
+ctx.moveTo(0, 0);
+ctx.lineTo(200, 200);
+```
+
+**Note:** CX provides an es module (`cx.es.js`) build which should be used by Webpack 2+ / rollup etc, for everything else there is a UMD build (`cx.min.js`).
+
+## Documentation
+
+### createCanvas
+
+Creates a new cx instance.
+
+#### Options:
+
+| Name     | Type          | Default                   | Description                            |
+| -------- | ------------- | ------------------------- | -------------------------------------- |
+| `width`  | `Integer`     | `400`                     | The width of the canvas                |
+| `height` | `Integer`     | `400`                     | The height of the canvas               |
+| `mount`  | `DOM Element` | `document.body`           | Where the `canvas` element is appended |
+| `dpr`    | `Integer`     | `window.devicePixelRatio` | Mutliplier for canvas dimensions       |
+
+#### Returns:
+
+```javascript
+{
+    ctx: {
+        base, //  CanvasRenderingContext2D
+        registerCustomMethod // (fn) - register custom drawing method
+    },
+    element: {
+        el, // <canvas> DOM element
+        setPXDensity // (fn) - scale <canvas> element and context
+    }
+}
+```
+
+### registerCustomMethod
