@@ -84,7 +84,7 @@ Creates a new cx instance. A cx instance has 2 parts: `element` and `context`.
 ```javascript
 {
     ctx: {
-        base, //  CanvasRenderingContext2D
+        _base, //  CanvasRenderingContext2D (should never need to be accessed directly)
         registerCustomMethod // (fn) - register custom drawing method
     },
     element: {
