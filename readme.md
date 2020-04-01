@@ -88,7 +88,7 @@ Creates a new cx instance.
 | `width`  | `Integer`     | `400`                     | The width of the canvas                |
 | `height` | `Integer`     | `400`                     | The height of the canvas               |
 | `mount`  | `DOM Element` | `document.body`           | Where the `canvas` element is appended |
-| `dpr`    | `Integer`     | `window.devicePixelRatio` | Mutliplier for canvas dimensions       |
+| `dpr`    | `Integer`     | `window.devicePixelRatio` | Pixel density.                         |
 
 #### Returns:
 
@@ -133,3 +133,10 @@ ctx.line(0, 0, 200, 200);
 ctx.moveTo(0, 0);
 ctx.lineTo(200, 200);
 ```
+
+#### Options:
+
+| Name        | Type                       | Default     | Description                                      |
+| ----------- | -------------------------- | ----------- | ------------------------------------------------ |
+| `ctx`       | `CanvasRenderingContext2D` | `null`      | The native canvas context                        |
+| `arguments` | `any`                      | `undefined` | Arbitrary additional arguments for custom method |
