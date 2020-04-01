@@ -79,18 +79,7 @@ ctx.lineTo(200, 200);
 
 ### `createCanvas`
 
-Creates a new cx instance.
-
-#### Options:
-
-| Name     | Type          | Default                   | Description                            |
-| -------- | ------------- | ------------------------- | -------------------------------------- |
-| `width`  | `Integer`     | `400`                     | The width of the canvas                |
-| `height` | `Integer`     | `400`                     | The height of the canvas               |
-| `mount`  | `DOM Element` | `document.body`           | Where the `canvas` element is appended |
-| `dpr`    | `Integer`     | `window.devicePixelRatio` | Pixel density.                         |
-
-#### Returns:
+Creates a new cx instance. A cx instance has 2 parts: `element` and `context`.
 
 ```javascript
 {
@@ -104,6 +93,32 @@ Creates a new cx instance.
     }
 }
 ```
+
+**Example**
+
+```javascript
+import { createCanvas } from '@georgedoescode/cx';
+
+const { ctx, element } = createCanvas({
+    width: 640,
+    height: 480,
+});
+
+// ctx can be used in exactly the same way as a CanvasRenderingContext2D instance
+ctx.lineWidth = 2;
+
+ctx.moveTo(0, 0);
+ctx.lineTo(0, 0, 200, 200);
+```
+
+#### Options:
+
+| Name     | Type          | Default                   | Description                            |
+| -------- | ------------- | ------------------------- | -------------------------------------- |
+| `width`  | `Integer`     | `400`                     | The width of the canvas                |
+| `height` | `Integer`     | `400`                     | The height of the canvas               |
+| `mount`  | `DOM Element` | `document.body`           | Where the `canvas` element is appended |
+| `dpr`    | `Integer`     | `window.devicePixelRatio` | Pixel density.                         |
 
 ### `ctx.registerCustomMethod`
 
@@ -128,10 +143,6 @@ ctx.registerCustomMethod('line', (ctx, x0, y0, x1, y1) => {
 
 // tada! we can call our custom method on ctx
 ctx.line(0, 0, 200, 200);
-
-// we can also call native canvas methods on ctx!
-ctx.moveTo(0, 0);
-ctx.lineTo(200, 200);
 ```
 
 #### Options:
