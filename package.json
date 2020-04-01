@@ -4,6 +4,9 @@
     "description": "CX 🎨",
     "main": "dist/cx.min.js",
     "module": "dist/cx.es.js",
+    "files": [
+        "dist/"
+    ],
     "scripts": {
         "build": "npx rollup -c",
         "watch": "npx rollup -cw",
