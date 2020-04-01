@@ -111,7 +111,7 @@ ctx.moveTo(0, 0);
 ctx.lineTo(0, 0, 200, 200);
 ```
 
-#### Options:
+**Options**
 
 | Name     | Type          | Default                   | Description                            |
 | -------- | ------------- | ------------------------- | -------------------------------------- |
@@ -145,7 +145,7 @@ ctx.registerCustomMethod('line', (ctx, x0, y0, x1, y1) => {
 ctx.line(0, 0, 200, 200);
 ```
 
-#### Options:
+**Options**
 
 | Name        | Type                       | Default     | Description                                      |
 | ----------- | -------------------------- | ----------- | ------------------------------------------------ |
