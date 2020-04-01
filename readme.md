@@ -2,21 +2,20 @@
 
 **A 💀 simple library created to provide a better canvas development experience.**
 
-## Why?
-
 There are a couple of things I wish `canvas` did:
 
 -   Scale to the DPR of the screen
--   Allow definition of custom drawing methods
+-   Allow definition of custom drawing methods without having to extend prototypes
 
 CX aims to provide both of these whilst staying out of the way and not disrupting your workflow.
+
+---
 
 ## Installation
 
 ### 1. Package Manager
 
 ```bash
-# npm
 npm i @georgedoescode/cx
 ```
 
@@ -26,11 +25,13 @@ npm i @georgedoescode/cx
 <script src="https://unpkg.com/@georgedoescode/cx">
 ```
 
+---
+
 ## Usage
 
-The _(probably)_ easiest and quickest way of getting started with cx is to grab the library from `unpkg`, pop it in a `script` tag and start having a poke.
+**Browser**
 
-Here is an example:
+The _(probably)_ easiest and quickest way of getting started with cx is to grab the library from `unpkg`, pop it in a `script` tag and start having a poke.
 
 ```html
 <!DOCTYPE html>
@@ -55,7 +56,7 @@ Here is an example:
 </html>
 ```
 
-### Usage with module bundlers
+**Module bundlers**
 
 CX exports the function `createCanvas`, this can be used to build a new cx instance.
 
@@ -72,9 +73,11 @@ ctx.lineTo(200, 200);
 
 **Note:** CX provides an es module (`cx.es.js`) build which should be used by Webpack 2+ / rollup etc, for everything else there is a UMD build (`cx.min.js`).
 
+---
+
 ## Documentation
 
-### createCanvas
+### `createCanvas`
 
 Creates a new cx instance.
 
@@ -102,4 +105,31 @@ Creates a new cx instance.
 }
 ```
 
-### registerCustomMethod
+### `ctx.registerCustomMethod`
+
+Register a custom drawing method to `ctx`.
+
+**Example**
+
+```javascript
+import { createCanvas } from '@georgedoescode/cx';
+
+const { ctx } = createCanvas({
+    width: 640,
+    height: 480,
+});
+
+// ctx.base is always passed as the first argument
+ctx.registerCustomMethod('line', (ctx, x0, y0, x1, y1) => {
+    ctx.moveTo(0, 0);
+    ctx.lineTo(x1, y1);
+    ctx.stroke();
+});
+
+// tada! we can call our custom method on ctx
+ctx.line(0, 0, 200, 200);
+
+// we can also call native canvas methods on ctx!
+ctx.moveTo(0, 0);
+ctx.lineTo(200, 200);
+```
