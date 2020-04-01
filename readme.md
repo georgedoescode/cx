@@ -9,8 +9,6 @@ There are a couple of things I wish `canvas` did:
 
 CX aims to provide both of these whilst staying out of the way and not disrupting your workflow.
 
----
-
 ## Installation
 
 ### 1. Package Manager
@@ -24,8 +22,6 @@ npm i @georgedoescode/cx
 ```html
 <script src="https://unpkg.com/@georgedoescode/cx">
 ```
-
----
 
 ## Usage
 
@@ -72,8 +68,6 @@ ctx.lineTo(200, 200);
 ```
 
 **Note:** CX provides an es module (`cx.es.js`) build which should be used by Webpack 2+ / rollup etc, for everything else there is a UMD build (`cx.min.js`).
-
----
 
 ## Documentation
 
