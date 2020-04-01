@@ -1,6 +1,6 @@
 {
     "name": "@georgedoescode/cx",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "CX 🎨",
     "main": "dist/cx.min.js",
     "module": "dist/cx.es.js",
