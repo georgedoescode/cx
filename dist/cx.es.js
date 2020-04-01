@@ -1,13 +1,13 @@
 function createCanvasElement(width, height) {
-  const canvas = document.createElement('canvas');
+  var canvas = document.createElement('canvas');
   canvas.width = width;
   canvas.height = height;
   return canvas;
 }
 
-function setCanvasPxDensity(canvas, density = 1) {
-  const canvasRect = canvas.getBoundingClientRect();
-  const ctx = canvas.getContext('2d');
+function setCanvasPxDensity(canvas, density) {
+  var canvasRect = canvas.getBoundingClientRect();
+  var ctx = canvas.getContext('2d');
   canvas.width = canvasRect.width * density;
   canvas.height = canvasRect.height * density;
   canvas.style.width = canvasRect.width + 'px';
@@ -20,52 +20,54 @@ function mountCanvasToDOM(canvas, mount) {
 }
 
 function createCustomContext(context) {
-  const customCtx = {
+  var customCtx = {
     base: context
   };
 
-  for (const prop in context) {
+  var _loop = function _loop(prop) {
     Object.defineProperty(customCtx, prop, {
-      get() {
+      get: function get() {
         return typeof customCtx.base[prop] === 'function' ? customCtx.base[prop].bind(context) : customCtx.base[prop];
       },
-
-      set(value) {
+      set: function set(value) {
+        console.log('value', value);
         customCtx.base[prop] = value;
       }
-
     });
+  };
+
+  for (var prop in context) {
+    _loop(prop);
   }
 
   customCtx.registerCustomMethod = function (key, value) {
     customCtx[key] = function () {
-      return value(customCtx.base, ...arguments);
+      return value.apply(void 0, [customCtx.base].concat(Array.prototype.slice.call(arguments)));
     };
   };
 
   return customCtx;
 }
 
-const DEFAULTS = {
+var DEFAULTS = {
   width: 640,
   height: 480,
-  mount: document.body
+  mount: document.body,
+  dpr: window.devicePixelRatio
 };
 function createCanvas(opts) {
-  const options = Object.assign(DEFAULTS, opts);
-  const canvasEl = createCanvasElement(options.width, options.height);
-  const ctx = createCustomContext(canvasEl.getContext('2d'));
+  var options = Object.assign(DEFAULTS, opts);
+  var canvasEl = createCanvasElement(options.width, options.height);
+  var ctx = createCustomContext(canvasEl.getContext('2d'));
   mountCanvasToDOM(canvasEl, options.mount);
-  setCanvasPxDensity(canvasEl, window.devicePixelRatio || 1);
+  setCanvasPxDensity(canvasEl, options.dpr);
   return {
-    ctx,
+    ctx: ctx,
     element: {
       el: canvasEl,
-
-      setPXDensity(density) {
+      setPXDensity: function setPXDensity(density) {
         setCanvasPxDensity(canvasEl, density);
       }
-
     }
   };
 }

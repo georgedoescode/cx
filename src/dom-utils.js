@@ -7,7 +7,7 @@ function createCanvasElement(width, height) {
     return canvas;
 }
 
-function setCanvasPxDensity(canvas, density = 1) {
+function setCanvasPxDensity(canvas, density) {
     const canvasRect = canvas.getBoundingClientRect();
     const ctx = canvas.getContext('2d');
 

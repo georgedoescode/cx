@@ -10,6 +10,7 @@ const DEFAULTS = {
     width: 640,
     height: 480,
     mount: document.body,
+    dpr: window.devicePixelRatio,
 };
 
 export function createCanvas(opts) {
@@ -19,7 +20,7 @@ export function createCanvas(opts) {
     const ctx = createCustomContext(canvasEl.getContext('2d'));
 
     mountCanvasToDOM(canvasEl, options.mount);
-    setCanvasPxDensity(canvasEl, window.devicePixelRatio || 1);
+    setCanvasPxDensity(canvasEl, options.dpr);
 
     return {
         ctx,
