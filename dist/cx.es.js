@@ -21,17 +21,16 @@ function mountCanvasToDOM(canvas, mount) {
 
 function createCustomContext(context) {
   var customCtx = {
-    base: context
+    _base: context
   };
 
   var _loop = function _loop(prop) {
     Object.defineProperty(customCtx, prop, {
       get: function get() {
-        return typeof customCtx.base[prop] === 'function' ? customCtx.base[prop].bind(context) : customCtx.base[prop];
+        return typeof customCtx._base[prop] === 'function' ? customCtx._base[prop].bind(context) : customCtx._base[prop];
       },
       set: function set(value) {
-        console.log('value', value);
-        customCtx.base[prop] = value;
+        customCtx._base[prop] = value;
       }
     });
   };
@@ -42,7 +41,7 @@ function createCustomContext(context) {
 
   customCtx.registerCustomMethod = function (key, value) {
     customCtx[key] = function () {
-      return value.apply(void 0, [customCtx.base].concat(Array.prototype.slice.call(arguments)));
+      return value.apply(void 0, [customCtx._base].concat(Array.prototype.slice.call(arguments)));
     };
   };
 
