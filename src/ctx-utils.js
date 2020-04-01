@@ -1,24 +1,24 @@
 function createCustomContext(context) {
     const customCtx = {
-        base: context,
+        _base: context,
     };
 
     for (const prop in context) {
         Object.defineProperty(customCtx, prop, {
             get() {
-                return typeof customCtx.base[prop] === 'function'
-                    ? customCtx.base[prop].bind(context)
-                    : customCtx.base[prop];
+                return typeof customCtx._base[prop] === 'function'
+                    ? customCtx._base[prop].bind(context)
+                    : customCtx._base[prop];
             },
             set(value) {
-                customCtx.base[prop] = value;
+                customCtx._base[prop] = value;
             },
         });
     }
 
     customCtx.registerCustomMethod = function(key, value) {
         customCtx[key] = function() {
-            return value(customCtx.base, ...arguments);
+            return value(customCtx._base, ...arguments);
         };
     };
 

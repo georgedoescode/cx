@@ -44,21 +44,21 @@ describe('CX Library', () => {
             normalCtx.lineTo(100, 100);
             normalCtx.fillRect(0, 0, 50, 50);
 
-            expect(ctx.base.__getPath()).toEqual(normalCtx.__getPath());
+            expect(ctx._base.__getPath()).toEqual(normalCtx.__getPath());
         });
 
-        it('ctx getters return values from base context if they are defined there', () => {
+        it('ctx getters return values from _base context if they are defined there', () => {
             const { ctx } = createCanvas();
 
             expect(ctx._lineWidthStack).not.toBeFalsy();
         });
 
-        it('Proxies native canvas context sets to the context base', () => {
+        it('Proxies native canvas context sets to the context _base', () => {
             const { ctx } = createCanvas();
 
             ctx._lineWidthStack = 3;
 
-            expect(ctx.base._lineWidthStack).toEqual(3);
+            expect(ctx._base._lineWidthStack).toEqual(3);
         });
 
         it('Registers custom drawing methods', () => {
