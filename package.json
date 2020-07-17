@@ -33,7 +33,7 @@
         "@babel/core": "^7.10.5",
         "@babel/preset-env": "^7.9.6",
         "@rollup/plugin-commonjs": "^14.0.0",
-        "@rollup/plugin-node-resolve": "^7.1.1",
+        "@rollup/plugin-node-resolve": "^8.4.0",
         "concurrently": "^5.2.0",
         "jest": "^26.0.0",
         "jest-canvas-mock": "^2.2.0",
